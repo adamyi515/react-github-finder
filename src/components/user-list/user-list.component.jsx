@@ -9,12 +9,12 @@ const UserList = () => {
 
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        fetch(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-            &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
-        .then(response => response.json())
-        .then(data => setUsers(data));
-    }, [])
+    // useEffect(() => {
+    //     fetch(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+    //         &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+    //     .then(response => response.json())
+    //     .then(data => setUsers(data));
+    // }, [])
 
     return(
         <div className={`${styles['user-list']}`}>

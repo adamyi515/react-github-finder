@@ -1,0 +1,17 @@
+.search {
+}
+
+.search__form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search__form-container input {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.search__form-container button {
+  margin-bottom: 10px;
+}
