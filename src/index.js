@@ -7,10 +7,16 @@ import reportWebVitals from './reportWebVitals';
 // react-router-dom
 import { BrowserRouter } from 'react-router-dom';
 
+// Context API
+import GithubState from './context/github/GithubState';
+
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      <GithubState>
       <App />
+      </GithubState>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
