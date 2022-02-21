@@ -1,0 +1,22 @@
+.navbar {
+  background-color: rgb(232, 72, 91);
+  padding: 10px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.navbar__menu {
+  display: flex;
+  list-style: none;
+}
+
+.navbar__menu-item {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar__menu li:first-child {
+  margin-right: 30px;
+}
