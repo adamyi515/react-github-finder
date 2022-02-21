@@ -2,3 +2,14 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+.round-img {
+  border-radius: 100px;
+}
+
+.btn {
+  padding: 5px 15px;
+  background-color: rgb(45, 48, 46);
+  color: #fff;
+  cursor: pointer;
+}
