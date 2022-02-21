@@ -1,0 +1,12 @@
+.alert {
+  color: #fff;
+  border-radius: 10px;
+}
+
+.alert--padding {
+  padding: 20px;
+}
+
+.bg-standard {
+  background-color: grey;
+}

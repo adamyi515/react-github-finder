@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 
 import styles from './user-list.module.css';
 
 // Components
 import UserItem from '../user-item/user-item.component';
 
+// Context
+import githubContext from '../../context/github/github.context';
+
 const UserList = () => {
 
-    const [users, setUsers] = useState([]);
-
-    // useEffect(() => {
-    //     fetch(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-    //         &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
-    //     .then(response => response.json())
-    //     .then(data => setUsers(data));
-    // }, [])
+    const { users, isLoading } = useContext(githubContext);
 
     return(
         <div className={`${styles['user-list']}`}>
-            {
-                users.map(user => <UserItem key={user.id} user={user} />)
-            }
+            {isLoading ? <h1 className='text-align'>Loading....</h1> : (
+                    users.map(user => <UserItem key={user.id} user={user} />)
+            )}
+            
         </div>
     )
 }
