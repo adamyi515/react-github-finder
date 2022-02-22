@@ -9,6 +9,17 @@ import {
 } 
 from './github.types';
 
+let githubClientId;
+let githubClientSecret;
+
+if(process.env.NODE_ENV !== 'production'){
+    githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID;
+    githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET;
+} else {
+    githubClientId = process.env.GITHUB_CLIENT_ID;
+    githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
+}
+
 const GithubState = ({ children }) => {
     const initialState = {
         users:[],
@@ -22,8 +33,8 @@ const GithubState = ({ children }) => {
     const searchUsers = (text) => {
         setLoading();
 
-        fetch(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-            &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+        fetch(`https://api.github.com/search/users?q=${text}&client_id=${githubClientId}
+            &client_secret=${githubClientSecret}`)
         .then(response => response.json())
         .then(data => dispatch({ type: SEARCH_USERS, payload: data.items }) );
     }
@@ -31,11 +42,11 @@ const GithubState = ({ children }) => {
     const getUser = (username) => {
         setLoading();
 
-        fetch(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-        &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+        fetch(`https://api.github.com/users/${username}?client_id=${githubClientId}
+        &client_secret=${githubClientSecret}`)
         .then(response => response.json())
         .then(data => dispatch({ type: GET_USER, payload: data}));
-        
+
     }
 
     const setAlert = ({ type, msg }) => {

@@ -44,7 +44,7 @@ const UserDetail = () => {
                     <h3>Bio</h3>
                     {bio ? bio : 'No bio provided'}
                     <div className={`${styles['user-detail__line-break']}`}></div>
-                    <button href={html_url} className={`${styles['user-detail--btn-link']}`} >Visit Github Profile</button>
+                    <a href={html_url} target='_blank' className={`${styles['user-detail--btn-link']}`} >Visit Github Profile</a>
                     <p>Username: {login ? login : 'Not provided'}</p>
                     <p>Company: {company ? company : 'Not provided'}</p>
                     <p>Website: {blog ? blog : 'Not provided'}</p>
