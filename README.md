@@ -10,4 +10,4 @@ Find/search for users using the github API.
 4. Github API
 5. React-router-dom
 
-Test out the application, click here:
+Test out the application, click here: https://projekt2501-github-finder.netlify.app/
