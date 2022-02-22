@@ -3,9 +3,9 @@ import GithubContext from './github.context';
 import githubReducer from './github.reducer';
 import {
     SEARCH_USERS,
+    GET_USER,
     SET_ALERT,
-    LOADING,
-    
+    LOADING
 } 
 from './github.types';
 
@@ -28,6 +28,16 @@ const GithubState = ({ children }) => {
         .then(data => dispatch({ type: SEARCH_USERS, payload: data.items }) );
     }
 
+    const getUser = (username) => {
+        setLoading();
+
+        fetch(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+        &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`)
+        .then(response => response.json())
+        .then(data => dispatch({ type: GET_USER, payload: data}));
+        
+    }
+
     const setAlert = ({ type, msg }) => {
         dispatch({ type: SET_ALERT, payload: {type, msg}})
 
@@ -36,8 +46,6 @@ const GithubState = ({ children }) => {
         }, 5000);
     }
 
-
-    // Local Methods /////////////////////////////////////////////////////////////
     const setLoading = () => {
         dispatch({ type: LOADING });
     }
@@ -48,8 +56,10 @@ const GithubState = ({ children }) => {
                 users: state.users,
                 isLoading: state.isLoading,
                 alert: state.alert,
+                user: state.user,
                 searchUsers,
-                setAlert
+                setAlert,
+                getUser
             }}
         >
             { children }

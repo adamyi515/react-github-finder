@@ -1,5 +1,6 @@
 import {
     SEARCH_USERS,
+    GET_USER,
     LOADING,
     SET_ALERT
 } from './github.types';
@@ -13,9 +14,17 @@ const githubReducer = (state, action) => {
         }
     }
 
+    if(action.type === GET_USER){
+        return {
+            ...state,
+            user: action.payload,
+            isLoading: false
+        }
+    }
+
     if(action.type === SET_ALERT){
         const payloadObj = action.payload;
-        
+
         if(payloadObj){
             return{
                 ...state,
